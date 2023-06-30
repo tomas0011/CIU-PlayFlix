@@ -57,8 +57,8 @@ export const Movies = ({  addToMyList, deleteFromMyList }) => {
   }
 
   useEffect(() => {
-    // getMovies();
-    getMoviesQuemadas();
+    getMovies();
+    // getMoviesQuemadas();
   }, []);
 
   return (

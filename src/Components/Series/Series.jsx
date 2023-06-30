@@ -57,8 +57,8 @@ export const Series = () => {
   }
 
   useEffect(() => {
-    // getSeries();
-    getSeriesQuemadas();
+    getSeries();
+    // getSeriesQuemadas();
   }, []);
 
   return (
