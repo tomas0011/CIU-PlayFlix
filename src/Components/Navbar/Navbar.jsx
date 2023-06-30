@@ -11,7 +11,7 @@ import {
 export const Navbar = ({ changePage }) => {
   return (
     <Fragment>
-      <BootrsrapNavbar expand='lg' className="bg-body-tertiary mb-3">
+      <BootrsrapNavbar expand='md' className="bg-body-tertiary mb-3">
         <Container fluid>
           <BootrsrapNavbar.Brand href="#">PlayFlix</BootrsrapNavbar.Brand>
           <BootrsrapNavbar.Toggle aria-controls={`offcanvasBootrsrapNavbar-expand-lg`} />
@@ -27,9 +27,9 @@ export const Navbar = ({ changePage }) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link onClick={() => changePage('games')} href="#action1">Games</Nav.Link>
-                <Nav.Link onClick={() => changePage('movies')} href="#action2">Movies</Nav.Link>
-                <Nav.Link onClick={() => changePage('my-list')} href="#action3">My List</Nav.Link>
+                <Nav.Link onClick={() => changePage('movies')} href="#movies">Movies</Nav.Link>
+                <Nav.Link onClick={() => changePage('series')} href="#series">Series</Nav.Link>
+                <Nav.Link onClick={() => changePage('my-list')} href="#my-list">My List</Nav.Link>
               </Nav>
               <Form className="d-flex">
                 <Form.Control

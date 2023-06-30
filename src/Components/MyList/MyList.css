@@ -1,0 +1,31 @@
+/* TODO: Mejorar los estilos de la tabla */
+
+.tableItem {
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.tableImage {
+  width: 200px;
+  height: 100px;
+  object-fit: fill;
+}
+
+.tableTitle {
+  width: 200px;
+  font-size: 21px;
+}
+
+.tableFlag {
+  font-size: 16px;
+}
+
+.tableDescription {
+  width: 200px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}

@@ -1,0 +1,6 @@
+.CardImg {
+  width: 300px;
+  height: 200px;
+  object-fit: fill;
+  margin: 0;
+}
