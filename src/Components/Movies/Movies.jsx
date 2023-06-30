@@ -2,63 +2,47 @@ import { Fragment, useEffect, useState } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
 export const Movies = () => {
-  // TODO: Integrar api de peliculas https://imdb-api.com/en/API/MostPopularMovies/k_bi3x5yez
   const [movies1, setMovies1] = useState([]);
   const [movies2, setMovies2] = useState([]);
   const [movies3, setMovies3] = useState([]);
-  
-  // const imageRescale = async (imageUrl) => {
-  //   // const apiKey = 'k_bi3x5yez'; // Personal
-  //   const apiKey = 'k_8izkdrc5'; // Unahur
-  //   const width = '50';
-  //   const height = '50';
-  //   const response = await fetch(`https://imdb-api.com/API/ResizeImage?apiKey=${apiKey}&size=${width}x${height}&url=https://m.media-amazon.com/images/M/${imageUrl}`);
-  //   console.log(response)
-  //   const { items } = await response.json();
-  //   // console.log(items)
-  //   return items;
-  // }
 
   const consultarApiPeliculas = async () => {
-    console.log(movies1.length)
-    if (!movies1.length) {
-      // const apiKey = 'k_bi3x5yez'; // Personal
-      // const apiKey = 'k_8izkdrc5'; // Unahur
-      // const response = await fetch(`https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`);
-      // const { items } = await response.json();
-      // // {
-      // //   id: "tt0439572",
-      // //   rank: "1",
-      // //   rankUpDown: "0",
-      // //   title: "The Flash",
-      // //   fullTitle: "The Flash (2023)",
-      // //   year: "2023",
-      // //   image: "https://m.media-amazon.com/images/M/MV5BZWE2ZWE5MDQtMTJlZi00MTVjLTkxOTgtNmNiYjg2NDIxN2NhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_Ratio0.6716_AL_.jpg",
-      // //   crew: "Andy Muschietti (dir.), Ezra Miller, Michael Keaton",
-      // //   imDbRating: "7.2",
-      // //   imDbRatingCount: "73887"
-      // // }
-      // const movies = items.map((movie) => ({
-      //   id: movie.id,
-      //   title: movie.title,
-      //   image: movie.image
-      // }));
-      // setMovies1(movies.splice(0, 20));
-      // setMovies2(movies.splice(0, 20));
-      // setMovies3(movies.splice(0, 20));
+    // const apiKey = 'k_bi3x5yez'; // Personal
+    // const apiKey = 'k_8izkdrc5'; // Unahur
+    // const response = await fetch(`https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`);
+    // const { items } = await response.json();
+    // // {
+    // //   id: "tt0439572",
+    // //   rank: "1",
+    // //   rankUpDown: "0",
+    // //   title: "The Flash",
+    // //   fullTitle: "The Flash (2023)",
+    // //   year: "2023",
+    // //   image: "https://m.media-amazon.com/images/M/MV5BZWE2ZWE5MDQtMTJlZi00MTVjLTkxOTgtNmNiYjg2NDIxN2NhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_Ratio0.6716_AL_.jpg",
+    // //   crew: "Andy Muschietti (dir.), Ezra Miller, Michael Keaton",
+    // //   imDbRating: "7.2",
+    // //   imDbRatingCount: "73887"
+    // // }
+    // const movies = items.map((movie) => ({
+    //   id: movie.id,
+    //   title: movie.title,
+    //   image: movie.image
+    // }));
+    // setMovies1(movies.splice(0, 20));
+    // setMovies2(movies.splice(0, 20));
+    // setMovies3(movies.splice(0, 20));
 
-      const moviesArr = [];
-      for (let index = 0; index < 60; index++) {
-        moviesArr.push({
-          id: index + 1,
-          title: `Peli ${index + 1}`,
-          image: `https://picsum.photos/${300 + index + 1}/200`
-        })
-      }
-      setMovies1(moviesArr.splice(0, 20));
-      setMovies2(moviesArr.splice(0, 20));
-      setMovies3(moviesArr.splice(0, 20));
+    const moviesArr = [];
+    for (let index = 0; index < 60; index++) {
+      moviesArr.push({
+        id: index + 1,
+        title: `Peli ${index + 1}`,
+        image: `https://picsum.photos/${300 + index + 1}/200`
+      })
     }
+    setMovies1(moviesArr.splice(0, 20));
+    setMovies2(moviesArr.splice(0, 20));
+    setMovies3(moviesArr.splice(0, 20));
   }
 
   useEffect(() => {

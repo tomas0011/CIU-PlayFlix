@@ -7,7 +7,6 @@ import './Carousel.css';
 import "swiper/css";
 
 export const Carousel = ({ topic, images }) => {
-  // console.log(images[0])
   return (
     <Fragment>
       <div className="swiperContainer">
@@ -16,7 +15,7 @@ export const Carousel = ({ topic, images }) => {
           modules={[Pagination, Autoplay]}
           loop={true}
           autoplay={{
-            delay: 5000,
+            delay: 10000,
             disableOnInteraction: false
           }}
           pagination={{
