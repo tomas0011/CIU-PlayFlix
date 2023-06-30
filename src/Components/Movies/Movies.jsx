@@ -39,15 +39,16 @@ export const Movies = () => {
       //   title: movie.title,
       //   image: movie.image
       // })));
-      setMovies([{
-        id: 1, title: 'Peli 1', image: 'https://picsum.photos/301/200'
-      }, {
-        id: 2, title: 'Peli 1', image: 'https://picsum.photos/302/200'
-      }, {
-        id: 3, title: 'Peli 1', image: 'https://picsum.photos/303/200'
-      }, {
-        id: 4, title: 'Peli 1', image: 'https://picsum.photos/304/200'
-      }])
+
+      const moviesArr = [];
+      for (let index = 0; index < 20; index++) {
+        moviesArr.push({
+          id: index + 1,
+          title: `Peli ${index + 1}`,
+          image: `https://picsum.photos/${300 + index + 1}/200`
+        })
+      }
+      setMovies(moviesArr)
     }
   }
 

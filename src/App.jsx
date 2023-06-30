@@ -7,10 +7,11 @@ import { Footer } from './Components/Footer/Footer';
 import { Series } from './Components/Series/Series';
 import { Movies } from './Components/Movies/Movies';
 import { MyList } from './Components/MyList/MyList';
+import { Gallery } from './Components/Gallery/Gallery';
 
 function App() {
   const [isLoading, doTransition] = useTransition();
-  const [pageName, setPageName] = useState('games');
+  const [pageName, setPageName] = useState('movies');
 
   const changePage = (page) => {
     doTransition(() => {
@@ -26,7 +27,8 @@ function App() {
           ? <Spinner animation="grow"/> 
           : pageName === 'movies' ? <Movies/>
           : pageName === 'series' ? <Series/>
-          : pageName === 'my-list' && <MyList/>
+          : pageName === 'my-list' ? <MyList/>
+          : pageName === 'search' && <Gallery/>
       }
       <Footer/>
     </div>

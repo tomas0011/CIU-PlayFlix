@@ -38,7 +38,7 @@ export const Navbar = ({ changePage }) => {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button onClick={() => changePage('search')} href="#search" variant="outline-success">Search</Button>
               </Form>
             </Offcanvas.Body>
           </BootrsrapNavbar.Offcanvas>

@@ -32,6 +32,9 @@ export const Carousel = ({ topic, images }) => {
             "@1.00": {
               slidesPerView: 4,
             },
+            "@1.50": {
+              slidesPerView: 7,
+            }
           }}
         >
           {images?.map((image) => (
