@@ -37,6 +37,8 @@ export const Navbar = ({ changePage }) => {
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  onSubmit={() => changePage('search')}
+                  href="#search"
                 />
                 <Button onClick={() => changePage('search')} href="#search" variant="outline-success">Search</Button>
               </Form>

@@ -16,7 +16,7 @@ export const Carousel = ({ topic, images }) => {
           modules={[Pagination, Autoplay]}
           loop={true}
           autoplay={{
-            delay: 2000,
+            delay: 5000,
             disableOnInteraction: false
           }}
           pagination={{
