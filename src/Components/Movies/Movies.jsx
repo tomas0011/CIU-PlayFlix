@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
-export const Movies = () => {
+export const Movies = ({  addToMyList, deleteFromMyList }) => {
   const [movies1, setMovies1] = useState([]);
   const [movies2, setMovies2] = useState([]);
   const [movies3, setMovies3] = useState([]);
@@ -34,6 +34,9 @@ export const Movies = () => {
     setMovies1(movies.splice(0, 20));
     setMovies2(movies.splice(0, 20));
     setMovies3(movies.splice(0, 20));
+    setMovies4(movies.splice(0, 20));
+    setMovies5(movies.splice(0, 20));
+    setMovies6(movies.splice(0, 20));
   }
 
   const getMoviesQuemadas = () => {
@@ -61,12 +64,12 @@ export const Movies = () => {
   return (
     <Fragment>
       <h1>Movies</h1>
-      <Carousel topic={'Ultimas Peliculas:'} images={movies1}/>
-      <Carousel topic={'Tendencias:'} images={movies2}/>
-      <Carousel topic={'Segun tus gustos:'} images={movies3}/>
-      <Carousel topic={'No te pierdas:'} images={movies4}/>
-      <Carousel topic={'Porque viste "Avatar":'} images={movies5}/>
-      <Carousel topic={'Para ver en familia:'} images={movies6}/>
+      <Carousel topic={'Ultimas Peliculas:'} images={movies1} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+      <Carousel topic={'Tendencias:'} images={movies2} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+      <Carousel topic={'Segun tus gustos:'} images={movies3} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+      <Carousel topic={'No te pierdas:'} images={movies4} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+      <Carousel topic={'Porque viste "Avatar":'} images={movies5} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+      <Carousel topic={'Para ver en familia:'} images={movies6} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
     </Fragment>
   );
 }
