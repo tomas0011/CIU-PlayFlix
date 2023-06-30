@@ -12,6 +12,8 @@ import { Gallery } from './Components/Gallery/Gallery';
 function App() {
   const [isLoading, doTransition] = useTransition();
   const [pageName, setPageName] = useState('movies');
+  
+  const [founds, changeFounds] = useState([]);
 
   const changePage = (page) => {
     doTransition(() => {
@@ -21,14 +23,14 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar changePage={changePage}/>
+      <Navbar changePage={changePage} changeFounds={changeFounds}/>
       {
         isLoading 
           ? <Spinner animation="grow"/> 
           : pageName === 'movies' ? <Movies/>
           : pageName === 'series' ? <Series/>
           : pageName === 'my-list' ? <MyList/>
-          : pageName === 'search' && <Gallery/>
+          : pageName === 'search' && <Gallery topic={'Resultados de la Busqueda:'} images={founds}/>
       }
       <Footer/>
     </div>

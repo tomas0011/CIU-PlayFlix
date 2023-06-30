@@ -1,16 +1,19 @@
+import { Fragment } from 'react';
 import {
   Container,
   Navbar as BootrsrapNavbar,
 } from 'react-bootstrap';
 
+import './Footer.css';
+
 export const Footer = () => {
   return (
-    <Container>
-      <BootrsrapNavbar expand="lg" className="bg-body-tertiary">
+    <Fragment>
+      <BootrsrapNavbar className="Footer bg-body-tertiary">
         <Container>
-          <BootrsrapNavbar.Brand href="#">Navbar</BootrsrapNavbar.Brand>
+          <BootrsrapNavbar.Brand className='FootFont' href="#">PlayFlix</BootrsrapNavbar.Brand>
         </Container>
       </BootrsrapNavbar>
-    </Container>
+    </Fragment>
   );
 }

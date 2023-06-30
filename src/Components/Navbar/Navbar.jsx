@@ -7,13 +7,16 @@ import {
   Navbar as BootrsrapNavbar,
   Offcanvas
 } from 'react-bootstrap';
+import { SearchBar } from './SearchBar/SearchBar';
 
-export const Navbar = ({ changePage }) => {
+import './Navbar.css';
+
+export const Navbar = ({ changePage, changeFounds }) => {
   return (
     <Fragment>
-      <BootrsrapNavbar expand='md' className="bg-body-tertiary mb-3">
+      <BootrsrapNavbar expand='md' className="Navbar bg-body-tertiary mb-3">
         <Container fluid>
-          <BootrsrapNavbar.Brand href="#">PlayFlix</BootrsrapNavbar.Brand>
+          <BootrsrapNavbar.Brand className='NavFont' onClick={() => changePage('movies')} href="#movies">PlayFlix</BootrsrapNavbar.Brand>
           <BootrsrapNavbar.Toggle aria-controls={`offcanvasBootrsrapNavbar-expand-lg`} />
           <BootrsrapNavbar.Offcanvas
             id={`offcanvasBootrsrapNavbar-expand-lg`}
@@ -22,26 +25,16 @@ export const Navbar = ({ changePage }) => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasBootrsrapNavbarLabel-expand-lg`}>
-                Offcanvas
+                Menu
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link onClick={() => changePage('movies')} href="#movies">Movies</Nav.Link>
-                <Nav.Link onClick={() => changePage('series')} href="#series">Series</Nav.Link>
-                <Nav.Link onClick={() => changePage('my-list')} href="#my-list">My List</Nav.Link>
+                <Nav.Link className='NavFont' onClick={() => changePage('movies')} href="#movies">Movies</Nav.Link>
+                <Nav.Link className='NavFont' onClick={() => changePage('series')} href="#series">Series</Nav.Link>
+                <Nav.Link className='NavFont' onClick={() => changePage('my-list')} href="#my-list">My List</Nav.Link>
               </Nav>
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                  onSubmit={() => changePage('search')}
-                  href="#search"
-                />
-                <Button onClick={() => changePage('search')} href="#search" variant="outline-success">Search</Button>
-              </Form>
+              <SearchBar changePage={changePage} changeFounds={changeFounds}/>
             </Offcanvas.Body>
           </BootrsrapNavbar.Offcanvas>
         </Container>
