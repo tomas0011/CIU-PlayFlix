@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CIU-Carrito/static/css/main.b2ae4383.css",
+    "main.js": "/CIU-Carrito/static/js/main.b102895b.js",
+    "static/js/787.c92a23cc.chunk.js": "/CIU-Carrito/static/js/787.c92a23cc.chunk.js",
+    "index.html": "/CIU-Carrito/index.html",
+    "main.b2ae4383.css.map": "/CIU-Carrito/static/css/main.b2ae4383.css.map",
+    "main.b102895b.js.map": "/CIU-Carrito/static/js/main.b102895b.js.map",
+    "787.c92a23cc.chunk.js.map": "/CIU-Carrito/static/js/787.c92a23cc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2ae4383.css",
+    "static/js/main.b102895b.js"
+  ]
+}
