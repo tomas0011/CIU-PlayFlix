@@ -17,12 +17,14 @@ function App() {
   const [pageName, setPageName] = useState('movies');
   const [founds, changeFounds] = useState([]);
 
+  const [moviesByCategory, setMoviesByCategory] = useState([]);
+  const [seriesByCategory, setSeriesByCategory] = useState([]);
+
   useEffect(() => {
     localStorage.setItem('play-flix-my-list', JSON.stringify(myList));
   }, [myList])
 
   const addToMyList = (data) => {
-    console.log('data', data)
     setMyList([...myList, {
       ...data,
       type: 'Peli',
@@ -48,8 +50,18 @@ function App() {
       {
         isLoading 
           ? <Spinner animation="grow"/> 
-          : pageName === 'movies' ? <Movies addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
-          : pageName === 'series' ? <Series addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+          : pageName === 'movies' ? <Movies 
+              moviesByCategory={moviesByCategory}
+              setMoviesByCategory={setMoviesByCategory} 
+              addToMyList={addToMyList} 
+              deleteFromMyList={deleteFromMyList}
+            />
+          : pageName === 'series' ? <Series
+              seriesByCategory={seriesByCategory}
+              setSeriesByCategory={setSeriesByCategory}
+              addToMyList={addToMyList}
+              deleteFromMyList={deleteFromMyList}
+            />
           : pageName === 'my-list' ? <MyList myList={myList} deleteFromMyList={deleteFromMyList} updateFromMyList={updateFromMyList}/>
           : pageName === 'search' && <Gallery topic={'Resultados de la Busqueda:'} images={founds} addToMyList={addToMyList}/>
       }

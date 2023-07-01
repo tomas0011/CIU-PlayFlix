@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { useState } from 'react';
 import {
   Form,
   Button
@@ -7,9 +7,18 @@ import {
 import './SearchBar.css';
 
 export const SearchBar = ({ changePage, changeFounds }) => {
+  const [search, setSearch] = useState('');
 
-  const searchMoviesAndSeries = () => {
-    // Aca hay que hacer el llamado al api de busqueda
+  const searchMoviesAndSeries = async () => {
+    // const apiKey = 'k_bi3x5yez'; // Personal
+    const apiKey = 'k_8izkdrc5'; // Unahur
+    const response = await fetch(`https://imdb-api.com/en/API/Search/${apiKey}/${search}`);
+    const { results } = await response.json();
+    return results.map((movie) => ({
+      id: movie.id,
+      title: movie.title,
+      image: movie.image
+    }));
   }
 
   const getMoviesQuemadas = async () => {
@@ -25,25 +34,32 @@ export const SearchBar = ({ changePage, changeFounds }) => {
   }
 
   const findOnApi = async () => {
-    // changeFounds(await searchMoviesAndSeries());
-    changeFounds(await getMoviesQuemadas());
+    changeFounds(await searchMoviesAndSeries());
+    // changeFounds(await getMoviesQuemadas());
   }
 
   const handlerOnClick = () => {
     findOnApi();
     changePage('search');
+    setSearch('');
+  }
+
+  const handlerOnChange = (e) => {
+    setSearch(e.target.value);
   }
 
   return (
-    <Form className="d-flex" onSubmit={() => changePage('search')}>
+    <Form className="d-flex" onSubmit={handlerOnClick}>
       <Form.Control
         type="search"
         placeholder="Search"
         className="me-2"
         aria-label="Search"
         href="#search"
+        value={search}
+        onChange={handlerOnChange}
       />
-      <Button onClick={() => handlerOnClick()} href="#search" variant="outline-success">Search</Button>
+      <Button onClick={handlerOnClick} href="#search" variant="outline-success">Search</Button>
     </Form>
   );
 }

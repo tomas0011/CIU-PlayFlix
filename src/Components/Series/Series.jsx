@@ -1,14 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
-export const Series = () => {
-  const [series1, setSeries1] = useState([]);
-  const [series2, setSeries2] = useState([]);
-  const [series3, setSeries3] = useState([]);
-  const [series4, setSeries4] = useState([]);
-  const [series5, setSeries5] = useState([]);
-  const [series6, setSeries6] = useState([]);
-
+export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, deleteFromMyList }) => {
   const getSeries = async () => {
     // const apiKey = 'k_bi3x5yez'; // Personal
     const apiKey = 'k_8izkdrc5'; // Unahur
@@ -31,12 +24,14 @@ export const Series = () => {
       title: serie.title,
       image: serie.image
     }));
-    setSeries1(series.splice(0, 20));
-    setSeries2(series.splice(0, 20));
-    setSeries3(series.splice(0, 20));
-    setSeries4(series.splice(0, 20));
-    setSeries5(series.splice(0, 20));
-    setSeries6(series.splice(0, 20));
+    setSeriesByCategory([
+      {title: 'Nuevas:', series: series.splice(0, 20)},
+      {title: 'Tendencias:', series: series.splice(0, 20)},
+      {title: 'Te pueden gustar:', series: series.splice(0, 20)},
+      {title: 'Porque viste "Game of Thrones":', series: series.splice(0, 20)},
+      {title: 'Para recordar:', series: series.splice(0, 20)},
+      {title: 'Vistas:', series: series.splice(0, 20)},
+    ])
   }
 
   const getSeriesQuemadas = () => {
@@ -48,28 +43,32 @@ export const Series = () => {
         image: `https://picsum.photos/${300 + index + 1}/200`
       })
     }
-    setSeries1(moviesArr.splice(0, 20));
-    setSeries2(moviesArr.splice(0, 20));
-    setSeries3(moviesArr.splice(0, 20));
-    setSeries4(moviesArr.splice(0, 20));
-    setSeries5(moviesArr.splice(0, 20));
-    setSeries6(moviesArr.splice(0, 20));
+    setSeriesByCategory([
+      {title: 'Nuevas:', series: moviesArr.splice(0, 20)},
+      {title: 'Tendencias:', series: moviesArr.splice(0, 20)},
+      {title: 'Te pueden gustar:', series: moviesArr.splice(0, 20)},
+      {title: 'Porque viste "Game of Thrones":', series: moviesArr.splice(0, 20)},
+      {title: 'Para recordar:', series: moviesArr.splice(0, 20)},
+      {title: 'Vistas:', series: moviesArr.splice(0, 20)},
+    ])
   }
 
   useEffect(() => {
-    getSeries();
-    // getSeriesQuemadas();
+    // getSeries();
+    getSeriesQuemadas();
   }, []);
 
   return (
     <Fragment>
       <h1>Series</h1>
-      <Carousel topic={'Nuevas:'} images={series1}/>
-      <Carousel topic={'Tendencias:'} images={series2}/>
-      <Carousel topic={'Te pueden gustar:'} images={series3}/>
-      <Carousel topic={'Porque viste "Game of Thrones":'} images={series4}/>
-      <Carousel topic={'Para recordar:'} images={series5}/>
-      <Carousel topic={'Vistas:'} images={series6}/>
+      {seriesByCategory.map(({ title, series }) => (
+        <Carousel
+          topic={title}
+          images={series}
+          addToMyList={addToMyList}
+          deleteFromMyList={deleteFromMyList}
+        />
+      ))}
     </Fragment>
   );
 }

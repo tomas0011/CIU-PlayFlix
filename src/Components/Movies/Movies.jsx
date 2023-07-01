@@ -1,14 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
-export const Movies = ({  addToMyList, deleteFromMyList }) => {
-  const [movies1, setMovies1] = useState([]);
-  const [movies2, setMovies2] = useState([]);
-  const [movies3, setMovies3] = useState([]);
-  const [movies4, setMovies4] = useState([]);
-  const [movies5, setMovies5] = useState([]);
-  const [movies6, setMovies6] = useState([]);
-
+export const Movies = ({  moviesByCategory, setMoviesByCategory, addToMyList, deleteFromMyList }) => {
   const getMovies = async () => {
     // const apiKey = 'k_bi3x5yez'; // Personal
     const apiKey = 'k_8izkdrc5'; // Unahur
@@ -31,12 +24,14 @@ export const Movies = ({  addToMyList, deleteFromMyList }) => {
       title: movie.title,
       image: movie.image
     }));
-    setMovies1(movies.splice(0, 20));
-    setMovies2(movies.splice(0, 20));
-    setMovies3(movies.splice(0, 20));
-    setMovies4(movies.splice(0, 20));
-    setMovies5(movies.splice(0, 20));
-    setMovies6(movies.splice(0, 20));
+    setMoviesByCategory([
+      {title: 'Ultimas Peliculas:', movies: movies.splice(0, 20)},
+      {title: 'Tendencias:', movies: movies.splice(0, 20)},
+      {title: 'Segun tus gustos:', movies: movies.splice(0, 20)},
+      {title: 'No te pierdas:', movies: movies.splice(0, 20)},
+      {title: 'Porque viste "Avatar":', movies: movies.splice(0, 20)},
+      {title: 'Para ver en familia:', movies: movies.splice(0, 20)},
+    ])
   }
 
   const getMoviesQuemadas = () => {
@@ -48,28 +43,32 @@ export const Movies = ({  addToMyList, deleteFromMyList }) => {
         image: `https://picsum.photos/${300 + index + 1}/200`
       })
     }
-    setMovies1(moviesArr.splice(0, 20));
-    setMovies2(moviesArr.splice(0, 20));
-    setMovies3(moviesArr.splice(0, 20));
-    setMovies4(moviesArr.splice(0, 20));
-    setMovies5(moviesArr.splice(0, 20));
-    setMovies6(moviesArr.splice(0, 20));
+    setMoviesByCategory([
+      {title: 'Ultimas Peliculas:', movies: moviesArr.splice(0, 20)},
+      {title: 'Tendencias:', movies: moviesArr.splice(0, 20)},
+      {title: 'Segun tus gustos:', movies: moviesArr.splice(0, 20)},
+      {title: 'No te pierdas:', movies: moviesArr.splice(0, 20)},
+      {title: 'Porque viste "Avatar":', movies: moviesArr.splice(0, 20)},
+      {title: 'Para ver en familia:', movies: moviesArr.splice(0, 20)},
+    ])
   }
 
   useEffect(() => {
-    getMovies();
-    // getMoviesQuemadas();
+    // getMovies();
+    getMoviesQuemadas();
   }, []);
 
   return (
     <Fragment>
       <h1>Movies</h1>
-      <Carousel topic={'Ultimas Peliculas:'} images={movies1} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
-      <Carousel topic={'Tendencias:'} images={movies2} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
-      <Carousel topic={'Segun tus gustos:'} images={movies3} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
-      <Carousel topic={'No te pierdas:'} images={movies4} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
-      <Carousel topic={'Porque viste "Avatar":'} images={movies5} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
-      <Carousel topic={'Para ver en familia:'} images={movies6} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+      {moviesByCategory.map(({ title, movies }) => (
+        <Carousel
+          topic={title}
+          images={movies}
+          addToMyList={addToMyList}
+          deleteFromMyList={deleteFromMyList}
+        />
+      ))}
     </Fragment>
   );
 }

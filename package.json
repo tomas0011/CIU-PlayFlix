@@ -2,7 +2,7 @@
   "name": "play-flix",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://tomas0011.github.io/CIU-Carrito",
+  "homepage": "http://tomas0011.github.io/CIU-PlayFlix",
   "dependencies": {
     "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
