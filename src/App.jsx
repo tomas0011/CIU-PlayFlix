@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Fragment, useEffect, useState, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Navbar } from './Components/Navbar/Navbar';
 import { Footer } from './Components/Footer/Footer';
@@ -34,7 +34,9 @@ function App() {
     }])
   };
 
-  const deleteFromMyList = (id) => {};
+  const deleteFromMyList = (id) => {
+    setMyList(myList.filter((element) => element.id !== id))
+  };
 
   const updateFromMyList = (id, toUpdate) => {};
 

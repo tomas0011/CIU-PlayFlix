@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
 export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, deleteFromMyList }) => {
@@ -54,8 +54,8 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
   }
 
   useEffect(() => {
-    // getSeries();
-    getSeriesQuemadas();
+    getSeries();
+    // getSeriesQuemadas();
   }, []);
 
   return (
@@ -63,6 +63,7 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
       <h1>Series</h1>
       {seriesByCategory.map(({ title, series }) => (
         <Carousel
+          key={title}
           topic={title}
           images={series}
           addToMyList={addToMyList}

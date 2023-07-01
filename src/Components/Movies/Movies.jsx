@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
 export const Movies = ({  moviesByCategory, setMoviesByCategory, addToMyList, deleteFromMyList }) => {
@@ -54,8 +54,8 @@ export const Movies = ({  moviesByCategory, setMoviesByCategory, addToMyList, de
   }
 
   useEffect(() => {
-    // getMovies();
-    getMoviesQuemadas();
+    getMovies();
+    // getMoviesQuemadas();
   }, []);
 
   return (
@@ -63,6 +63,7 @@ export const Movies = ({  moviesByCategory, setMoviesByCategory, addToMyList, de
       <h1>Movies</h1>
       {moviesByCategory.map(({ title, movies }) => (
         <Carousel
+          key={title}
           topic={title}
           images={movies}
           addToMyList={addToMyList}
