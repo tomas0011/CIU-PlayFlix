@@ -4,14 +4,14 @@ import {
   Button
 } from 'react-bootstrap';
 
+import { apiKey } from '../../../apiKey';
+
 import './SearchBar.css';
 
-export const SearchBar = ({ changePage, changeFounds }) => {
+export const SearchBar = ({ selectPage, changeFounds }) => {
   const [search, setSearch] = useState('');
 
   const searchMoviesAndSeries = async () => {
-    // const apiKey = 'k_bi3x5yez'; // Personal
-    const apiKey = 'k_8izkdrc5'; // Unahur
     const response = await fetch(`https://imdb-api.com/en/API/Search/${apiKey}/${search}`);
     const { results } = await response.json();
     return results.map((movie) => ({
@@ -34,13 +34,13 @@ export const SearchBar = ({ changePage, changeFounds }) => {
   }
 
   const findOnApi = async () => {
-    changeFounds(await searchMoviesAndSeries());
-    // changeFounds(await getMoviesQuemadas());
+    // changeFounds(await searchMoviesAndSeries());
+    changeFounds(await getMoviesQuemadas());
   }
 
-  const handlerOnClick = () => {
+  const handlerOnSearch = () => {
     findOnApi();
-    changePage('search');
+    selectPage('search');
     setSearch('');
   }
 
@@ -49,7 +49,10 @@ export const SearchBar = ({ changePage, changeFounds }) => {
   }
 
   return (
-    <Form className="d-flex" onSubmit={handlerOnClick}>
+    <Form 
+      className="d-flex"
+      onSubmit={handlerOnSearch}
+    >
       <Form.Control
         type="search"
         placeholder="Search"
@@ -59,7 +62,11 @@ export const SearchBar = ({ changePage, changeFounds }) => {
         value={search}
         onChange={handlerOnChange}
       />
-      <Button onClick={handlerOnClick} href="#search" variant="outline-success">Search</Button>
+      <Button 
+        onClick={handlerOnSearch}
+        variant="success"
+        href="#search"
+      >Search</Button>
     </Form>
   );
 }

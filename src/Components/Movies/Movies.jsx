@@ -1,10 +1,10 @@
 import { Fragment, useEffect } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
+import { apiKey } from '../../apiKey';
+
 export const Movies = ({  moviesByCategory, setMoviesByCategory, addToMyList, deleteFromMyList }) => {
   const getMovies = async () => {
-    // const apiKey = 'k_bi3x5yez'; // Personal
-    const apiKey = 'k_8izkdrc5'; // Unahur
     const response = await fetch(`https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`);
     const { items } = await response.json();
     // {
@@ -54,8 +54,8 @@ export const Movies = ({  moviesByCategory, setMoviesByCategory, addToMyList, de
   }
 
   useEffect(() => {
-    getMovies();
-    // getMoviesQuemadas();
+    // getMovies();
+    getMoviesQuemadas();
   }, []);
 
   return (

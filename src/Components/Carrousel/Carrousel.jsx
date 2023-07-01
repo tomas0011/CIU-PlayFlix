@@ -38,7 +38,11 @@ export const Carousel = ({ topic, images, addToMyList, deleteFromMyList }) => {
         >
           {images?.map((image) => (
             <SwiperSlide key={image.id}>
-              <Card data={image} addToMyList={addToMyList} deleteFromMyList={deleteFromMyList}/>
+              <Card
+                data={image}
+                addToMyList={addToMyList}
+                deleteFromMyList={deleteFromMyList}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

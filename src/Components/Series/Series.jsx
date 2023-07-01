@@ -1,10 +1,10 @@
 import { Fragment, useEffect } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
+import { apiKey } from '../../apiKey';
+
 export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, deleteFromMyList }) => {
   const getSeries = async () => {
-    // const apiKey = 'k_bi3x5yez'; // Personal
-    const apiKey = 'k_8izkdrc5'; // Unahur
     const response = await fetch(`https://imdb-api.com/en/API/MostPopularTVs/${apiKey}`);
     const { items } = await response.json();
     // {

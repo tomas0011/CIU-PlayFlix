@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import {
   Button,
   Container,
@@ -12,6 +12,10 @@ import { SearchBar } from './SearchBar/SearchBar';
 import './Navbar.css';
 
 export const Navbar = ({ changePage, changeFounds }) => {
+  const selectPage = (page) => {
+    changePage(page);
+  }
+
   return (
     <Fragment>
       <BootrsrapNavbar expand='md' className="Navbar bg-body-tertiary mb-3">
@@ -30,11 +34,11 @@ export const Navbar = ({ changePage, changeFounds }) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className='NavFont' onClick={() => changePage('movies')} href="#movies">Movies</Nav.Link>
-                <Nav.Link className='NavFont' onClick={() => changePage('series')} href="#series">Series</Nav.Link>
-                <Nav.Link className='NavFont' onClick={() => changePage('my-list')} href="#my-list">My List</Nav.Link>
+                <Nav.Link className='NavFont' onClick={() => selectPage('movies')} href="#movies">Movies</Nav.Link>
+                <Nav.Link className='NavFont' onClick={() => selectPage('series')} href="#series">Series</Nav.Link>
+                <Nav.Link className='NavFont' onClick={() => selectPage('my-list')} href="#my-list">My List</Nav.Link>
               </Nav>
-              <SearchBar changePage={changePage} changeFounds={changeFounds}/>
+              <SearchBar selectPage={selectPage} changeFounds={changeFounds}/>
             </Offcanvas.Body>
           </BootrsrapNavbar.Offcanvas>
         </Container>
