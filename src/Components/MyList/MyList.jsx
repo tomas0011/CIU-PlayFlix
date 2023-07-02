@@ -1,12 +1,9 @@
 import { Fragment, useState } from 'react';
 import {
-  Table,
-  Modal,
-  Button,
-  FloatingLabel,
-  Form
+  Table
 } from 'react-bootstrap';
-import { StarRating } from './StarRating/StarRating';
+import { ListItem } from './ListItem/ListItem';
+import { ItemModal } from './ItemModal/ItemModal';
 
 import './MyList.css';
 
@@ -47,62 +44,21 @@ export const MyList = ({ myList, deleteFromMyList, updateFromMyList }) => {
             !myList?.length
               ? <h4>No hay nada para mostrar</h4>
               : myList.map((media) => (
-                <tr key={media.id} className="tableItem" onClick={() => showElementDetail(media)}>
-                  <td>
-                    <img className='tableImage' src={media.image} alt={media.title}/>
-                  </td>
-                  <td>
-                    <h3 className='tableTitle'>{media.title}</h3>
-                    <label className='tableFlag'>{media.type}</label>
-                    <label className='tableFlag'>{media.status}</label>
-                  </td>
-                  <td>
-                    <p className='tableDescription'>{media.description}</p>
-                  </td>
-                  <td>{media.stars} stars</td>
-                </tr>
+                <ListItem
+                  media={media}
+                  showElementDetail={showElementDetail}
+                />
               ))
           }
         </tbody>
       </Table>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{activeElement.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className='modalInfo'>
-            <img className="tableImage" src={activeElement.image} alt={activeElement.title} />
-            <div>
-              <FloatingLabel controlId="floatingSelect" label="Works with selects">
-                <Form.Select aria-label="Floating label select example">
-                  <option value="pending">Pending</option>
-                  <option value="onCourse">On course</option>
-                  <option value="watched">Watched</option>
-                </Form.Select>
-              </FloatingLabel>
-              <StarRating/>
-            </div>
-          </div>
-            <FloatingLabel controlId="floatingTextarea2" label="Comments">
-              <Form.Control
-                as="textarea"
-                placeholder="Leave a comment here"
-                style={{ height: '100px' }}
-              />
-            </FloatingLabel>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={updateElement}>
-            Save Changes
-          </Button>
-          <Button variant="danger" onClick={deleteElementDetail}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ItemModal
+        show={show}
+        handleClose={handleClose}
+        activeElement={activeElement}
+        updateElement={updateElement}
+        deleteElementDetail={deleteElementDetail}
+      />
     </Fragment>
   );
 }

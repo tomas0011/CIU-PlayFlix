@@ -7,18 +7,6 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
   const getSeries = async () => {
     const response = await fetch(`https://imdb-api.com/en/API/MostPopularTVs/${apiKey}`);
     const { items } = await response.json();
-    // {
-    //   id: "tt0439572",
-    //   rank: "1",
-    //   rankUpDown: "0",
-    //   title: "The Flash",
-    //   fullTitle: "The Flash (2023)",
-    //   year: "2023",
-    //   image: "https://m.media-amazon.com/images/M/MV5BZWE2ZWE5MDQtMTJlZi00MTVjLTkxOTgtNmNiYjg2NDIxN2NhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_Ratio0.6716_AL_.jpg",
-    //   crew: "Andy Muschietti (dir.), Ezra Miller, Michael Keaton",
-    //   imDbRating: "7.2",
-    //   imDbRatingCount: "73887"
-    // }
     const series = items.map((serie) => ({
       id: serie.id,
       title: serie.title,
@@ -54,8 +42,8 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
   }
 
   useEffect(() => {
-    getSeries();
-    // getSeriesQuemadas();
+    // getSeries();
+    getSeriesQuemadas();
   }, []);
 
   return (
