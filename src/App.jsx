@@ -13,7 +13,7 @@ function App() {
   let savedMyList = JSON.parse(localStorage.getItem('play-flix-my-list')) || [];
 
   const [myList, setMyList] = useState(savedMyList);
-  const [isLoading, doTransition] = useTransition();
+  const [isLoading, startTransition] = useTransition();
   const [pageName, setPageName] = useState('movies');
   const [founds, changeFounds] = useState([]);
 
@@ -41,7 +41,7 @@ function App() {
   const updateFromMyList = (id, toUpdate) => {};
 
   const changePage = (page) => {
-    doTransition(() => {
+    startTransition(() => {
       setPageName(page)
     })
   };
@@ -51,7 +51,7 @@ function App() {
       <Navbar changePage={changePage} changeFounds={changeFounds}/>
       {
         isLoading 
-          ? <Spinner animation="grow"/> 
+          ? <Spinner animation="grow"/>
           : pageName === 'movies' ? <Movies 
               moviesByCategory={moviesByCategory}
               setMoviesByCategory={setMoviesByCategory} 

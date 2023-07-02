@@ -42,8 +42,8 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
   }
 
   useEffect(() => {
-    // getSeries();
-    getSeriesQuemadas();
+    getSeries();
+    // getSeriesQuemadas();
   }, []);
 
   return (

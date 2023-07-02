@@ -34,8 +34,8 @@ export const SearchBar = ({ selectPage, changeFounds }) => {
   }
 
   const findOnApi = async () => {
-    // changeFounds(await searchMoviesAndSeries());
-    changeFounds(await getMoviesQuemadas());
+    // changeFounds(await getMoviesQuemadas());
+    changeFounds(await searchMoviesAndSeries());
   }
 
   const handlerOnSearch = () => {
