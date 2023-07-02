@@ -1,3 +1,4 @@
+import { Fragment, useState } from 'react';
 import {
   Modal,
   Button,
@@ -5,6 +6,7 @@ import {
   Form
 } from 'react-bootstrap';
 import { StarRating } from '../StarRating/StarRating';
+import { ActionAlert } from './ActionAlert/ActionAlert';
 
 import './ItemModal.css';
 
@@ -15,16 +17,28 @@ export const ItemModal = ({
   updateElement,
   deleteElementDetail
 }) => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleCloseModal = () => {
+    handleClose();
+    setShowAlert(false);
+  }
+
+  const handleDeleteElement = () => {
+    setShowAlert(false);
+    deleteElementDetail();
+  }
+
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleCloseModal}>
       <Modal.Header closeButton>
         <Modal.Title>{activeElement.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className='modalInfo'>
-          <img className="tableImage" src={activeElement.image} alt={activeElement.title} />
-          <div>
-            <FloatingLabel controlId="floatingSelect" label="Works with selects">
+        <div className='ItemModal'>
+          <img className="ItemModalImage" src={activeElement.image} alt={activeElement.title} />
+          <div className='ItemModalData'>
+            <FloatingLabel controlId="floatingSelect" label="Status">
               <Form.Select aria-label="Floating label select example">
                 <option value="pending">Pending</option>
                 <option value="onCourse">On course</option>
@@ -42,17 +56,21 @@ export const ItemModal = ({
             />
           </FloatingLabel>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={updateElement}>
-          Save Changes
-        </Button>
-        <Button variant="danger" onClick={deleteElementDetail}>
+      <Modal.Footer className='ItemModalButtons'>
+        <Button variant="danger" onClick={() => {setShowAlert(!showAlert)}}>
           Delete
         </Button>
+        <Button variant="success" onClick={updateElement}>
+          Save Changes
+        </Button>
       </Modal.Footer>
+      <ActionAlert
+        show={showAlert}
+        setShow={setShowAlert}
+        title='Warning'
+        message={`If you drop "${activeElement.title}" you will lose your changes.`}
+        action={handleDeleteElement}
+      />
     </Modal>
   );
 }

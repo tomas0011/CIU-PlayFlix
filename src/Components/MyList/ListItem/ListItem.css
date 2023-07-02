@@ -1,3 +1,18 @@
+.ListItemImage {
+  width: 100px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ListItemDescription {
+  width: 200px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   .hide-on-md {
     display: none;
