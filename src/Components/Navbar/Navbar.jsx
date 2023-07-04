@@ -9,7 +9,7 @@ import { SearchBar } from './SearchBar/SearchBar';
 
 import './Navbar.css';
 
-export const Navbar = ({ pageName, changePage, changeFounds }) => {
+export const Navbar = ({ changePage, pageName, search, setSearch, searchAction }) => {
   const [offcanvasExpanded, setOffcanvasExpanded] = useState(false);
 
   const showOffcanvas = () => { setOffcanvasExpanded(true); }
@@ -63,7 +63,7 @@ export const Navbar = ({ pageName, changePage, changeFounds }) => {
                   MY LIST
                 </Nav.Link>
               </Nav>
-              <SearchBar selectPage={selectPage} changeFounds={changeFounds}/>
+              <SearchBar search={search} setSearch={setSearch} searchAction={searchAction}/>
             </Offcanvas.Body>
           </BootrsrapNavbar.Offcanvas>
         </Container>

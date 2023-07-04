@@ -4,10 +4,17 @@ import { useEffect, useState, useTransition } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Navbar } from './Components/Navbar/Navbar';
 import { Footer } from './Components/Footer/Footer';
-import { Series } from './Components/Series/Series';
-import { Movies } from './Components/Movies/Movies';
+import { Catalogue } from './Components/Catalogue/Catalogue';
 import { MyList } from './Components/MyList/MyList';
 import { Gallery } from './Components/Gallery/Gallery';
+
+import {
+  getMoviesSuggestions,
+  getMoviesByGenreId,
+  getSeriesSuggestions,
+  getSeriesByGenreId,
+  searchMoviesAndSeries
+} from './Api/api';
 
 function App() {
   let savedMyList = JSON.parse(localStorage.getItem('play-flix-my-list')) || [];
@@ -16,6 +23,11 @@ function App() {
   const [isLoading, startTransition] = useTransition();
   const [pageName, setPageName] = useState('movies');
   const [founds, changeFounds] = useState([]);
+
+  const [series, setSeries] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     localStorage.setItem('play-flix-my-list', JSON.stringify(myList));
@@ -46,29 +58,67 @@ function App() {
     }));
   };
 
+  const handlerOnSearch = () => {
+    changePage('search');
+    setSearch('');
+  }
+
   const changePage = (page) => {
-    startTransition(() => {
+    startTransition(async () => {
       setPageName(page)
+      if (page === 'movies') {
+        setMovies([
+          {title: 'TRENDS', data: await getMoviesSuggestions()},
+          {title: 'THRILLER', data: await getMoviesByGenreId(53)},
+          {title: 'ANIMATION', data: await getMoviesByGenreId(16)},
+          {title: 'COMEDY', data: await getMoviesByGenreId(35)},
+          {title: 'DRAMA', data: await getMoviesByGenreId(18)},
+          {title: 'HORROR', data: await getMoviesByGenreId(27)},
+        ])
+      } else if (page === 'series') {
+        setSeries([
+          {title: 'TRENDS', data: await getSeriesSuggestions()},
+          {title: 'CRIME', data: await getSeriesByGenreId(80)},
+          {title: 'ANIMATION', data: await getSeriesByGenreId(16)},
+          {title: 'COMEDY', data: await getSeriesByGenreId(35)},
+          {title: 'DRAMA', data: await getSeriesByGenreId(18)},
+          {title: 'ACTION & ADVENTURE:', data: await getSeriesByGenreId(10759)},
+        ])
+      } else if (page === 'search') {
+        changeFounds(await searchMoviesAndSeries(search));
+      }
     })
   };
 
+  useEffect(() => {
+    changePage('movies')
+  }, []);
+
   return (
     <div className="App">
-      <Navbar pageName={pageName} changePage={changePage} changeFounds={changeFounds}/>
+      <Navbar
+        changePage={changePage}
+        pageName={pageName}
+        search={search}
+        setSearch={setSearch}
+        searchAction={handlerOnSearch}
+      />
       {
         isLoading
           ? <div className="AppLoader">
               <Spinner className="Loader" animation="grow"/>
             </div>
-          : pageName === 'movies' ? <Movies
-              myList={myList}
-              addToMyList={addToMyList} 
-              deleteFromMyList={deleteFromMyList}
-            />
-          : pageName === 'series' ? <Series
+          : pageName === 'movies' ? <Catalogue
+              title="MOVIES"
+              elements={movies}
               myList={myList}
               addToMyList={addToMyList}
-              deleteFromMyList={deleteFromMyList}
+            />
+          : pageName === 'series' ? <Catalogue
+              title="SERIES"
+              elements={series}
+              myList={myList}
+              addToMyList={addToMyList}
             />
           : pageName === 'my-list' ? <MyList
               myList={myList}

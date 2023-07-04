@@ -6,7 +6,7 @@ import { Card } from '../Card/Card';
 import './Carousel.css';
 import "swiper/css";
 
-export const Carousel = ({ topic, images, myList, addToMyList, deleteFromMyList }) => {
+export const Carousel = ({ topic, data, myList, addToMyList }) => {
   return (
     <Fragment>
       <div className="swiperContainer">
@@ -36,13 +36,12 @@ export const Carousel = ({ topic, images, myList, addToMyList, deleteFromMyList 
             }
           }}
         >
-          {images?.map((image) => (
-            <SwiperSlide key={image.id}>
+          {data?.map((element) => (
+            <SwiperSlide key={element.id}>
               <Card
-                data={image}
+                data={element}
                 myList={myList}
                 addToMyList={addToMyList}
-                deleteFromMyList={deleteFromMyList}
               />
             </SwiperSlide>
           ))}
