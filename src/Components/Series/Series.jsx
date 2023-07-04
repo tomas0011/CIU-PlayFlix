@@ -42,12 +42,12 @@ export const Series = ({ myList, addToMyList, deleteFromMyList }) => {
 
   const getSeries = async () => {
     setSeriesByCategory([
-      {title: 'Sugestions:', series: await getSuggestions()},
-      {title: 'Crime:', series: await getByGenreId(80)},
-      {title: 'Animation:', series: await getByGenreId(16)},
-      {title: 'Comedy:', series: await getByGenreId(35)},
-      {title: 'Drama:', series: await getByGenreId(18)},
-      {title: 'Action & Adventure:', series: await getByGenreId(10759)},
+      {title: 'TRENDS', series: await getSuggestions()},
+      {title: 'CRIME', series: await getByGenreId(80)},
+      {title: 'ANIMATION', series: await getByGenreId(16)},
+      {title: 'COMEDY', series: await getByGenreId(35)},
+      {title: 'DRAMA', series: await getByGenreId(18)},
+      {title: 'ACTION & ADVENTURE:', series: await getByGenreId(10759)},
     ])
     // if (results.length) {
     // } else {
@@ -76,11 +76,11 @@ export const Series = ({ myList, addToMyList, deleteFromMyList }) => {
 
   useEffect(() => {
     getSeries();
-  });
+  }, []);
 
   return (
     <Fragment>
-      <h1 className="Title">Series</h1>
+      <h1 className="Title">SERIES</h1>
       {seriesByCategory.map(({ title, series }) => (
         <Carousel
           key={title}

@@ -66,7 +66,7 @@ export const SearchBar = ({ selectPage, changeFounds }) => {
     >
       <Form.Control
         type="search"
-        placeholder="Search"
+        placeholder="SEARCH"
         className="me-2"
         aria-label="Search"
         href="#search"
@@ -77,7 +77,7 @@ export const SearchBar = ({ selectPage, changeFounds }) => {
         onClick={handlerOnSearch}
         variant="success"
         href="#search"
-      >Search</Button>
+      >SEARCH</Button>
     </Form>
   );
 }

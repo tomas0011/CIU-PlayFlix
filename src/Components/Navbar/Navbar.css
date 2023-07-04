@@ -1,16 +1,25 @@
 .Navbar {
-  background-color: #492398 !important;
+  background-color: var(--color-base) !important;
 }
 
 .NavFont {
   color: white;
 }
 
+.NavFont:hover {
+  color: white;
+  opacity: 0.8;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  color: var(--color-bg);
+  font-weight: bolder;
+}
+
 .offcanvas-body {
-  background-color: #492398;
+  background-color: var(--color-base);
 }
 
 .offcanvas-header {
-  color: white;
-  background-color: #210c4e;
+  background-color: var(--color-base);
 }

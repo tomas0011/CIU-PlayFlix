@@ -1,5 +1,12 @@
+:root {
+  --color-bg: #2f2d2d;
+  --color-base: #8F4444;
+  --color-acent: #446E8F;
+}
+
 body {
-  font-family: 'Open Sans', sans-serif; /* TODO: Cambiar la fuente */
+  background-color: var(--color-bg);
+  color: white;
 }
 
 .AppLoader {
@@ -15,7 +22,22 @@ body {
   height: 400px;
 }
 
+.btn-success {
+  background-color: var(--color-acent);
+  color: white;
+  border: 2px solid var(--color-acent);
+  transition: 300ms ease;
+}
+
+.btn-success:hover {
+  background-color: var(--color-base);
+  color: white;
+  border: 2px solid var(--color-base);
+  transition: 300ms ease;
+}
+
 .Title {
+  letter-spacing: 10px;
   text-align: center;
-  font-size: 3em;
+  font-size: 4em;
 }

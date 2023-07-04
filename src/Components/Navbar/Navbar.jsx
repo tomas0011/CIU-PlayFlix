@@ -33,7 +33,7 @@ export const Navbar = ({ pageName, changePage, changeFounds }) => {
           >
             <Offcanvas.Header closeButton onClick={hideOffcanvas}>
               <Offcanvas.Title id={`offcanvasBootrsrapNavbarLabel-expand-lg`}>
-                Menu
+                MENU
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -44,7 +44,7 @@ export const Navbar = ({ pageName, changePage, changeFounds }) => {
                   onClick={() => selectPage('movies')}
                   href="#movies"
                 >
-                  Movies
+                  MOVIES
                 </Nav.Link>
                 <Nav.Link
                   className='NavFont'
@@ -52,7 +52,7 @@ export const Navbar = ({ pageName, changePage, changeFounds }) => {
                   onClick={() => selectPage('series')}
                   href="#series"
                 >
-                  Series
+                  SERIES
                 </Nav.Link>
                 <Nav.Link
                   className='NavFont'
@@ -60,7 +60,7 @@ export const Navbar = ({ pageName, changePage, changeFounds }) => {
                   onClick={() => selectPage('my-list')}
                   href="#my-list"
                 >
-                  My List
+                  MY LIST
                 </Nav.Link>
               </Nav>
               <SearchBar selectPage={selectPage} changeFounds={changeFounds}/>

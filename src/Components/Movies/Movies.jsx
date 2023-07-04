@@ -42,12 +42,12 @@ export const Movies = ({ myList, addToMyList, deleteFromMyList }) => {
 
   const getMovies = async () => {
     setMoviesByCategory([
-      {title: 'Sugestions:', movies: await getSuggestions()},
-      {title: 'Thriller:', movies: await getByGenreId(53)},
-      {title: 'Animation:', movies: await getByGenreId(16)},
-      {title: 'Comedy:', movies: await getByGenreId(35)},
-      {title: 'Drama:', movies: await getByGenreId(18)},
-      {title: 'Horror:', movies: await getByGenreId(27)},
+      {title: 'TRENDS', movies: await getSuggestions()},
+      {title: 'THRILLER', movies: await getByGenreId(53)},
+      {title: 'ANIMATION', movies: await getByGenreId(16)},
+      {title: 'COMEDY', movies: await getByGenreId(35)},
+      {title: 'DRAMA', movies: await getByGenreId(18)},
+      {title: 'HORROR', movies: await getByGenreId(27)},
     ])
   }
 
@@ -72,11 +72,11 @@ export const Movies = ({ myList, addToMyList, deleteFromMyList }) => {
 
   useEffect(() => {
     getMovies();
-  });
+  }, []);
 
   return (
     <Fragment>
-      <h1 className="Title">Movies</h1>
+      <h1 className="Title">MOVIES</h1>
       {moviesByCategory.map(({ title, movies }) => (
         <Carousel
           key={title}

@@ -1,8 +1,23 @@
+@import '../../App.css';
+
+.Card {
+  border: none;
+  transition-duration: 300ms;
+  background-color: var(--color-bg);
+  color: white;
+}
+
+.Card:hover {
+  transform: scale(1.05);
+  z-index: 1;
+  transition-duration: 100ms;
+}
+
 .CardImage {
+  border-radius: 0;
   width: auto;
   height: 19em;
   object-fit: cover;
-  margin: 0;
   overflow: hidden;
 }
 

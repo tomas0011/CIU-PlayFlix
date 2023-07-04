@@ -1,5 +1,5 @@
 .Footer {
-  background-color: #492398 !important;
+  background-color: var(--color-base) !important;
   width: 100% !important;
 }
 

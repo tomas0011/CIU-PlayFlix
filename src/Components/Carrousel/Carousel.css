@@ -3,7 +3,16 @@
   width: 100%;
 }
 
+.swiper-horizontal {
+  overflow: visible !important;
+}
+
+.swiper:hover {
+  overflow: visible;
+}
+
 .CarrouselTopic {
+  letter-spacing: 10px;
   margin: 0 0 1em 2em;
   font-size: 2em;
 }
