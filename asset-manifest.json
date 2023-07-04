@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/CIU-PlayFlix/static/css/main.4282f9cb.css",
-    "main.js": "/CIU-PlayFlix/static/js/main.c8ed5e51.js",
+    "main.js": "/CIU-PlayFlix/static/js/main.4ba22943.js",
     "static/js/787.c92a23cc.chunk.js": "/CIU-PlayFlix/static/js/787.c92a23cc.chunk.js",
     "index.html": "/CIU-PlayFlix/index.html",
     "main.4282f9cb.css.map": "/CIU-PlayFlix/static/css/main.4282f9cb.css.map",
-    "main.c8ed5e51.js.map": "/CIU-PlayFlix/static/js/main.c8ed5e51.js.map",
+    "main.4ba22943.js.map": "/CIU-PlayFlix/static/js/main.4ba22943.js.map",
     "787.c92a23cc.chunk.js.map": "/CIU-PlayFlix/static/js/787.c92a23cc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4282f9cb.css",
-    "static/js/main.c8ed5e51.js"
+    "static/js/main.4ba22943.js"
   ]
 }
