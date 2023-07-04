@@ -1,6 +1,7 @@
 .swiperContainer {
   margin: 2em 0 2em 0;
   width: 100%;
+  overflow: hidden;
 }
 
 .swiper-horizontal {
