@@ -1,3 +1,9 @@
 .swiperContainer {
+  margin: 2em 0 2em 0;
   width: 100%;
+}
+
+.CarrouselTopic {
+  margin: 0 0 1em 2em;
+  font-size: 2em;
 }

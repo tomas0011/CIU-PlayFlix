@@ -1,3 +1,43 @@
+.ListItemInfo {
+  height: 217px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ListItemFlags {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ListItemFlag {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.ListItem-pending {
+  background-color: red;
+}
+
+.ListItem-onCourse {
+  background-color: yellow;
+}
+
+.ListItem-watched {
+  background-color: pink;
+}
+
+.ListItem-movie {
+  background-color: greenyellow;
+}
+
+.ListItem-serie {
+  background-color: blue;
+}
+
 .ListItemImage {
   width: 100px;
   height: 200px;

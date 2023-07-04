@@ -1,6 +1,6 @@
 .CardImage {
-  width: 300px;
-  height: 400px;
+  width: auto;
+  height: 19em;
   object-fit: cover;
   margin: 0;
   overflow: hidden;
@@ -8,8 +8,21 @@
 
 .CardImageLoader {
   width: auto;
-  height: 12.8em;
+  height: 19em;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.CardTitle {
+  height: 3em;
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.CardButton {
+  width: 100%;
+  display: block;
 }

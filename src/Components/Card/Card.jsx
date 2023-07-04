@@ -11,7 +11,7 @@ export const Card = ({ data, addToMyList, deleteFromMyList }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <ReactCard>
+    <ReactCard className='Card'>
       {
         isLoading
           && <div className='CardImageLoader'>
@@ -19,14 +19,15 @@ export const Card = ({ data, addToMyList, deleteFromMyList }) => {
           </div>
       }
       <ReactCard.Img
+        className='CardImage'
         onLoad={() => setIsLoading(false)}
-        loading='lazy'
         variant="top"
         src={data.image}
       />
       <ReactCard.Body>
         <ReactCard.Text>
-          <Button onClick={() => addToMyList(data)} variant="success">Add</Button>
+          <h5 className='CardTitle'>{data.title}</h5>
+          <Button className='CardButton' onClick={() => addToMyList(data)} variant="success">Add</Button>
         </ReactCard.Text>
       </ReactCard.Body>
     </ReactCard>

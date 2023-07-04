@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {
   Button,
   Container,
@@ -12,22 +12,32 @@ import { SearchBar } from './SearchBar/SearchBar';
 import './Navbar.css';
 
 export const Navbar = ({ changePage, changeFounds }) => {
+  const [offcanvasExpanded, setOffcanvasExpanded] = useState(false);
+
+  const showOffcanvas = () => { setOffcanvasExpanded(true); }
+  const hideOffcanvas = () => { setOffcanvasExpanded(false); }
+
   const selectPage = (page) => {
     changePage(page);
+    hideOffcanvas()
   }
+
+  useEffect(() => {
+    console.log(offcanvasExpanded)
+  }, [offcanvasExpanded])
 
   return (
     <Fragment>
-      <BootrsrapNavbar expand='md' className="Navbar bg-body-tertiary mb-3">
+      <BootrsrapNavbar expanded={offcanvasExpanded} expand='md' className="Navbar bg-body-tertiary mb-3">
         <Container fluid>
           <BootrsrapNavbar.Brand className='NavFont' onClick={() => changePage('movies')} href="#movies">PlayFlix</BootrsrapNavbar.Brand>
-          <BootrsrapNavbar.Toggle aria-controls={`offcanvasBootrsrapNavbar-expand-lg`} />
+          <BootrsrapNavbar.Toggle onClick={showOffcanvas} aria-controls={`offcanvasBootrsrapNavbar-expand-lg`} />
           <BootrsrapNavbar.Offcanvas
             id={`offcanvasBootrsrapNavbar-expand-lg`}
             aria-labelledby={`offcanvasBootrsrapNavbarLabel-expand-lg`}
             placement="end"
           >
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton onClick={hideOffcanvas}>
               <Offcanvas.Title id={`offcanvasBootrsrapNavbarLabel-expand-lg`}>
                 Menu
               </Offcanvas.Title>

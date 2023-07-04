@@ -10,7 +10,7 @@ export const Carousel = ({ topic, images, addToMyList, deleteFromMyList }) => {
   return (
     <Fragment>
       <div className="swiperContainer">
-        <h3>{topic}</h3>
+        <h3 className="CarrouselTopic">{topic}</h3>
         <Swiper
           modules={[Pagination, Autoplay]}
           loop={true}

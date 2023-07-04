@@ -25,20 +25,29 @@ function App() {
   }, [myList])
 
   const addToMyList = (data) => {
-    setMyList([...myList, {
-      ...data,
-      type: 'Peli',
-      status: 'Pending',
-      description: '',
-      stars: 0
-    }])
+    const found = myList.find((element) => element.id === data.id);
+    if (!found) {
+      setMyList([...myList, {
+        ...data,
+        status: 'pending',
+        description: '',
+        stars: 0
+      }]);
+    }
   };
 
   const deleteFromMyList = (id) => {
     setMyList(myList.filter((element) => element.id !== id))
   };
 
-  const updateFromMyList = (id, toUpdate) => {};
+  const updateFromMyList = (id, toUpdate) => {
+    setMyList(myList.map((element) => {
+      if (element.id === id) {
+        return toUpdate;
+      }
+      return element;
+    }));
+  };
 
   const changePage = (page) => {
     startTransition(() => {
@@ -50,8 +59,10 @@ function App() {
     <div className="App">
       <Navbar changePage={changePage} changeFounds={changeFounds}/>
       {
-        isLoading 
-          ? <Spinner animation="grow"/>
+        isLoading
+          ? <div className="AppLoader">
+              <Spinner className="Loader" animation="grow"/>
+            </div>
           : pageName === 'movies' ? <Movies 
               moviesByCategory={moviesByCategory}
               setMoviesByCategory={setMoviesByCategory} 
@@ -64,8 +75,16 @@ function App() {
               addToMyList={addToMyList}
               deleteFromMyList={deleteFromMyList}
             />
-          : pageName === 'my-list' ? <MyList myList={myList} deleteFromMyList={deleteFromMyList} updateFromMyList={updateFromMyList}/>
-          : pageName === 'search' && <Gallery topic={'Resultados de la Busqueda:'} images={founds} addToMyList={addToMyList}/>
+          : pageName === 'my-list' ? <MyList
+              myList={myList}
+              deleteFromMyList={deleteFromMyList}
+              updateFromMyList={updateFromMyList}
+            />
+          : pageName === 'search' && <Gallery
+              topic={`Results for the search:`}
+              founds={founds}
+              addToMyList={addToMyList}
+            />
       }
       <Footer/>
     </div>

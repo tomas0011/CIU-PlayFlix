@@ -1,0 +1,21 @@
+body {
+  font-family: 'Open Sans', sans-serif; /* TODO: Cambiar la fuente */
+}
+
+.AppLoader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8em 0 8em 0;
+}
+
+.Loader {
+  width: 400px;
+  height: 400px;
+}
+
+.Title {
+  text-align: center;
+  font-size: 3em;
+}

@@ -2,14 +2,16 @@ import './ListItem.css';
 
 export const ListItem = ({ media, showElementDetail }) => {
   return (
-    <tr key={media.id} className="tableItem" onClick={() => showElementDetail(media)}>
+    <tr key={media.id} onClick={() => showElementDetail(media)}>
       <td>
         <img className='ListItemImage' src={media.image} alt={media.title}/>
       </td>
-      <td>
-        <h3 className='tableTitle'>{media.title}</h3>
-        <label className='tableFlag'>{media.type}</label>
-        <label className='tableFlag'>{media.status}</label>
+      <td className='ListItemInfo'>
+        <h3 className='ListItemTitle'>{media.title}</h3>
+        <div className='ListItemFlags'>
+          <label className={`ListItemFlag ListItem-${media.type}`}>{media.type}</label>
+          <label className={`ListItemFlag ListItem-${media.status}`}>{media.status}</label>
+        </div>
       </td>
       <td className='hide-on-md'>
         <p className='ListItemDescription'>{media.description}</p>

@@ -56,6 +56,7 @@ export const MyList = ({ myList, deleteFromMyList, updateFromMyList }) => {
         show={show}
         handleClose={handleClose}
         activeElement={activeElement}
+        setActiveElement={setActiveElement}
         updateElement={updateElement}
         deleteElementDetail={deleteElementDetail}
       />
