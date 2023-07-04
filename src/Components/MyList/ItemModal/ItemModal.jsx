@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Modal,
   Button,
@@ -31,7 +31,6 @@ export const ItemModal = ({
   }
 
   const handlerOnChange = (e) => {
-    console.log(e.target)
     setActiveElement({
       ...activeElement,
       [e.target.name]: e.target.value

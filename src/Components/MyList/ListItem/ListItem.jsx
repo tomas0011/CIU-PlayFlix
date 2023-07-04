@@ -3,7 +3,7 @@ import './ListItem.css';
 export const ListItem = ({ media, showElementDetail }) => {
   return (
     <tr key={media.id} onClick={() => showElementDetail(media)}>
-      <td>
+      <td className='ListItemImageBox'>
         <img className='ListItemImage' src={media.image} alt={media.title}/>
       </td>
       <td className='ListItemInfo'>
@@ -14,7 +14,11 @@ export const ListItem = ({ media, showElementDetail }) => {
         </div>
       </td>
       <td className='hide-on-md'>
-        <p className='ListItemDescription'>{media.description}</p>
+        <p className='ListItemDescription'>{
+          media.description
+            ? media.description
+            : 'Not have notes now'
+        }</p>
       </td>
       <td className='hide-on-md'>
         {media.stars} stars

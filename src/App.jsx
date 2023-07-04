@@ -17,9 +17,6 @@ function App() {
   const [pageName, setPageName] = useState('movies');
   const [founds, changeFounds] = useState([]);
 
-  const [moviesByCategory, setMoviesByCategory] = useState([]);
-  const [seriesByCategory, setSeriesByCategory] = useState([]);
-
   useEffect(() => {
     localStorage.setItem('play-flix-my-list', JSON.stringify(myList));
   }, [myList])
@@ -57,21 +54,19 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar changePage={changePage} changeFounds={changeFounds}/>
+      <Navbar pageName={pageName} changePage={changePage} changeFounds={changeFounds}/>
       {
         isLoading
           ? <div className="AppLoader">
               <Spinner className="Loader" animation="grow"/>
             </div>
-          : pageName === 'movies' ? <Movies 
-              moviesByCategory={moviesByCategory}
-              setMoviesByCategory={setMoviesByCategory} 
+          : pageName === 'movies' ? <Movies
+              myList={myList}
               addToMyList={addToMyList} 
               deleteFromMyList={deleteFromMyList}
             />
           : pageName === 'series' ? <Series
-              seriesByCategory={seriesByCategory}
-              setSeriesByCategory={setSeriesByCategory}
+              myList={myList}
               addToMyList={addToMyList}
               deleteFromMyList={deleteFromMyList}
             />
@@ -83,6 +78,7 @@ function App() {
           : pageName === 'search' && <Gallery
               topic={`Results for the search:`}
               founds={founds}
+              myList={myList}
               addToMyList={addToMyList}
             />
       }

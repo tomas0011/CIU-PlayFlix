@@ -7,7 +7,7 @@ import { Card } from '../Card/Card';
 
 import './Gallery.css';
 
-export const Gallery = ({ topic, founds, addToMyList }) => {
+export const Gallery = ({ topic, founds, myList, addToMyList }) => {
   return (
     <div className='Gallery'>
       <h2 className="GalleryTitle">{topic} {founds.search}</h2>
@@ -17,7 +17,7 @@ export const Gallery = ({ topic, founds, addToMyList }) => {
             !founds.results?.length
               ? <h4>Vacio</h4>
               : founds.results.map((image) => (
-                <Col>
+                <Col key={image.id}>
                   <Card
                     data={image}
                     addToMyList={addToMyList}

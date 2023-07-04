@@ -1,8 +1,6 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import {
-  Button,
   Container,
-  Form,
   Nav,
   Navbar as BootrsrapNavbar,
   Offcanvas
@@ -11,7 +9,7 @@ import { SearchBar } from './SearchBar/SearchBar';
 
 import './Navbar.css';
 
-export const Navbar = ({ changePage, changeFounds }) => {
+export const Navbar = ({ pageName, changePage, changeFounds }) => {
   const [offcanvasExpanded, setOffcanvasExpanded] = useState(false);
 
   const showOffcanvas = () => { setOffcanvasExpanded(true); }
@@ -21,10 +19,6 @@ export const Navbar = ({ changePage, changeFounds }) => {
     changePage(page);
     hideOffcanvas()
   }
-
-  useEffect(() => {
-    console.log(offcanvasExpanded)
-  }, [offcanvasExpanded])
 
   return (
     <Fragment>
@@ -44,9 +38,30 @@ export const Navbar = ({ changePage, changeFounds }) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className='NavFont' onClick={() => selectPage('movies')} href="#movies">Movies</Nav.Link>
-                <Nav.Link className='NavFont' onClick={() => selectPage('series')} href="#series">Series</Nav.Link>
-                <Nav.Link className='NavFont' onClick={() => selectPage('my-list')} href="#my-list">My List</Nav.Link>
+                <Nav.Link
+                  className='NavFont'
+                  active={pageName === "movies"}
+                  onClick={() => selectPage('movies')}
+                  href="#movies"
+                >
+                  Movies
+                </Nav.Link>
+                <Nav.Link
+                  className='NavFont'
+                  active={pageName === "series"}
+                  onClick={() => selectPage('series')}
+                  href="#series"
+                >
+                  Series
+                </Nav.Link>
+                <Nav.Link
+                  className='NavFont'
+                  active={pageName === "my-list"}
+                  onClick={() => selectPage('my-list')}
+                  href="#my-list"
+                >
+                  My List
+                </Nav.Link>
               </Nav>
               <SearchBar selectPage={selectPage} changeFounds={changeFounds}/>
             </Offcanvas.Body>

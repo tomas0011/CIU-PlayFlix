@@ -42,7 +42,7 @@ export const MyList = ({ myList, deleteFromMyList, updateFromMyList }) => {
         <tbody>
           {
             !myList?.length
-              ? <h4>No hay nada para mostrar</h4>
+              ? <h4 className="Title">Not elements on my list now</h4>
               : myList.map((media) => (
                 <ListItem
                   media={media}

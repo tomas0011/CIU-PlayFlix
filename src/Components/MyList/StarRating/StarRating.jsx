@@ -4,7 +4,7 @@ export const StarRating = ({ handlerOnChange, activeValue }) => {
   return (
     <div className="StarRating">
       <input
-        onClick={handlerOnChange}
+        onChange={handlerOnChange}
         checked={activeValue === "5"}
         id="radio5"
         type="radio"
@@ -13,7 +13,7 @@ export const StarRating = ({ handlerOnChange, activeValue }) => {
       />
       <label htmlFor="radio5">★</label>
       <input
-        onClick={handlerOnChange}
+        onChange={handlerOnChange}
         checked={activeValue === "4"}
         id="radio4"
         type="radio"
@@ -22,7 +22,7 @@ export const StarRating = ({ handlerOnChange, activeValue }) => {
       />
       <label htmlFor="radio4">★</label>
       <input
-        onClick={handlerOnChange}
+        onChange={handlerOnChange}
         checked={activeValue === "3"}
         id="radio3"
         type="radio"
@@ -31,7 +31,7 @@ export const StarRating = ({ handlerOnChange, activeValue }) => {
       />
       <label htmlFor="radio3">★</label>
       <input
-        onClick={handlerOnChange}
+        onChange={handlerOnChange}
         checked={activeValue === "2"}
         id="radio2"
         type="radio"
@@ -40,7 +40,7 @@ export const StarRating = ({ handlerOnChange, activeValue }) => {
       />
       <label htmlFor="radio2">★</label>
       <input
-        onClick={handlerOnChange}
+        onChange={handlerOnChange}
         checked={activeValue === "1"}
         id="radio1"
         type="radio"

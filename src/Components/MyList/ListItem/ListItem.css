@@ -16,26 +16,32 @@
 .ListItemFlag {
   border-radius: 10px;
   padding: 5px;
+  color: black;
 }
 
 .ListItem-pending {
-  background-color: red;
+  background-color: rgba(133, 133, 133, 0.438);
 }
 
 .ListItem-onCourse {
-  background-color: yellow;
+  background-color: rgba(0, 26, 255, 0.439);
 }
 
 .ListItem-watched {
-  background-color: pink;
+  background-color: rgba(209, 255, 192, 0.526);
 }
 
 .ListItem-movie {
-  background-color: greenyellow;
+  background-color: rgba(255, 47, 47, 0.447);
 }
 
 .ListItem-serie {
-  background-color: blue;
+  background-color: rgba(255, 251, 0, 0.38);
+}
+
+.ListItemImageBox {
+  width: 100px;
+  height: 200px;
 }
 
 .ListItemImage {
@@ -45,8 +51,9 @@
 }
 
 .ListItemDescription {
-  width: 200px;
   display: -webkit-box;
+  max-width: 417px;
+  word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;

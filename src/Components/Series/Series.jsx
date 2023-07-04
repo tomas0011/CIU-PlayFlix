@@ -1,9 +1,11 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Carousel } from '../Carrousel/Carrousel';
 
 import { apiKey } from '../../apiKey';
 
-export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, deleteFromMyList }) => {
+export const Series = ({ myList, addToMyList, deleteFromMyList }) => {
+  const [seriesByCategory, setSeriesByCategory] = useState([]);
+
   const getSuggestions = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc`, {
       method: 'GET',
@@ -74,7 +76,7 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
 
   useEffect(() => {
     getSeries();
-  }, []);
+  });
 
   return (
     <Fragment>
@@ -84,6 +86,7 @@ export const Series = ({  seriesByCategory, setSeriesByCategory, addToMyList, de
           key={title}
           topic={title}
           images={series}
+          myList={myList}
           addToMyList={addToMyList}
           deleteFromMyList={deleteFromMyList}
         />
