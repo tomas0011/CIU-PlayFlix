@@ -66,7 +66,7 @@ function App() {
   const changePage = (page) => {
     startTransition(async () => {
       setPageName(page)
-      if (page === 'movies') {
+      if (page === 'movies' && !series.length) {
         setMovies([
           {title: 'TRENDS', data: await getMoviesSuggestions()},
           {title: 'THRILLER', data: await getMoviesByGenreId(53)},
@@ -75,7 +75,7 @@ function App() {
           {title: 'DRAMA', data: await getMoviesByGenreId(18)},
           {title: 'HORROR', data: await getMoviesByGenreId(27)},
         ])
-      } else if (page === 'series') {
+      } else if (page === 'series' && !series.length) {
         setSeries([
           {title: 'TRENDS', data: await getSeriesSuggestions()},
           {title: 'CRIME', data: await getSeriesByGenreId(80)},
