@@ -4,6 +4,18 @@
   background-color: var(--color-base) !important;
 }
 
+.NavBody {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .NavBody {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
 .Logo {
   width: 12vh;
 }

@@ -48,33 +48,35 @@ export const Navbar = ({ changePage, pageName, search, setSearch }) => {
                 MENU
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link
-                  className='NavFont'
-                  active={pageName === "movies"}
-                  onClick={() => selectPage('movies')}
-                  href="#movies"
-                >
-                  MOVIES
-                </Nav.Link>
-                <Nav.Link
-                  className='NavFont'
-                  active={pageName === "series"}
-                  onClick={() => selectPage('series')}
-                  href="#series"
-                >
-                  SERIES
-                </Nav.Link>
-                <Nav.Link
-                  className='NavFont'
-                  active={pageName === "my-list"}
-                  onClick={() => selectPage('my-list')}
-                  href="#my-list"
-                >
-                  MY LIST
-                </Nav.Link>
-              </Nav>
+            <Offcanvas.Body className="NavBody">
+              <div>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link
+                    className='NavFont'
+                    active={pageName === "movies"}
+                    onClick={() => selectPage('movies')}
+                    href="#movies"
+                  >
+                    MOVIES
+                  </Nav.Link>
+                  <Nav.Link
+                    className='NavFont'
+                    active={pageName === "series"}
+                    onClick={() => selectPage('series')}
+                    href="#series"
+                  >
+                    SERIES
+                  </Nav.Link>
+                  <Nav.Link
+                    className='NavFont'
+                    active={pageName === "my-list"}
+                    onClick={() => selectPage('my-list')}
+                    href="#my-list"
+                  >
+                    MY LIST
+                  </Nav.Link>
+                </Nav>
+              </div>
               <SearchBar search={search} setSearch={setSearch} searchAction={handlerOnSearch}/>
             </Offcanvas.Body>
           </BootrsrapNavbar.Offcanvas>

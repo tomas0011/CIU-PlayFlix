@@ -7,13 +7,6 @@
 }
 
 .col {
-  margin: 1em;
   padding: 0;
   overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .col {
-    margin: 0;
-  }
 }
