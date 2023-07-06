@@ -24,14 +24,11 @@ export const Carousel = ({ topic, data, myList, action, deleteAction, loop, Card
             "@0.00": {
               slidesPerView: 2,
             },
-            "@0.50": {
-              slidesPerView: 3,
-            },
-            "@1.00": {
+            "@0.75": {
               slidesPerView: 4,
             },
             "@1.50": {
-              slidesPerView: 7,
+              slidesPerView: 8,
             }
           }}
         >
