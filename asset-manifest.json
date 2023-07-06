@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/CIU-PlayFlix/static/css/main.81bd6ba9.css",
-    "main.js": "/CIU-PlayFlix/static/js/main.309c6302.js",
+    "main.css": "/CIU-PlayFlix/static/css/main.aa8d4b8e.css",
+    "main.js": "/CIU-PlayFlix/static/js/main.bfb6856d.js",
     "static/js/787.c92a23cc.chunk.js": "/CIU-PlayFlix/static/js/787.c92a23cc.chunk.js",
     "static/media/playflix.png": "/CIU-PlayFlix/static/media/playflix.5f73c90d824e1b428f85.png",
     "index.html": "/CIU-PlayFlix/index.html",
-    "main.81bd6ba9.css.map": "/CIU-PlayFlix/static/css/main.81bd6ba9.css.map",
-    "main.309c6302.js.map": "/CIU-PlayFlix/static/js/main.309c6302.js.map",
+    "main.aa8d4b8e.css.map": "/CIU-PlayFlix/static/css/main.aa8d4b8e.css.map",
+    "main.bfb6856d.js.map": "/CIU-PlayFlix/static/js/main.bfb6856d.js.map",
     "787.c92a23cc.chunk.js.map": "/CIU-PlayFlix/static/js/787.c92a23cc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.81bd6ba9.css",
-    "static/js/main.309c6302.js"
+    "static/css/main.aa8d4b8e.css",
+    "static/js/main.bfb6856d.js"
   ]
 }
