@@ -21,7 +21,7 @@ export const Gallery = ({ topic, founds, myList, addToMyList }) => {
                   <Card
                     myList={myList}
                     data={image}
-                    addToMyList={addToMyList}
+                    action={addToMyList}
                     deleteFromMyList={() => {}}
                   />
                 </Col>
