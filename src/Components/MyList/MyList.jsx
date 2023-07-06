@@ -1,65 +1,36 @@
-import { Fragment, useState } from 'react';
-import {
-  Table
-} from 'react-bootstrap';
-import { ListItem } from './ListItem/ListItem';
-import { ItemModal } from './ItemModal/ItemModal';
-
-import './MyList.css';
+import { Fragment } from 'react';
+import { Carousel } from '../Carrousel/Carrousel';
+import { CardWithModal } from '../CardModal/CardWithModal';
 
 export const MyList = ({ myList, deleteFromMyList, updateFromMyList }) => {
-  const [show, setShow] = useState(false);
-  const [activeElement, setActiveElement] = useState({});
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const showElementDetail = (data) => {
-    setActiveElement(data);
-    handleShow();
-  };
-
-  const deleteElementDetail = () => {
-    deleteFromMyList(activeElement.id);
-    handleClose();
-  };
-
-  // const handlerChangeActiveElement = (e) => {
-  //   setActiveElement({
-  //     ...activeElement,
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
-
-  const updateElement = () => {
-    updateFromMyList(activeElement.id, activeElement);
-    handleClose();
-  }
+  const filterInProgress = (movies) => movies.filter(movie => movie.status === 'onCourse');
+  const filterMovies = (movies) => movies.filter(movie => movie.type === 'movie');
+  const filterSeries = (movies) => movies.filter(movie => movie.type === 'serie');
 
   return (
     <Fragment>
-      <Table striped bordered hover>
-        <tbody>
-          {
-            !myList?.length
-              ? <h4 className="Title">Not elements on my list now</h4>
-              : myList.map((media) => (
-                <ListItem
-                  media={media}
-                  showElementDetail={showElementDetail}
+      <h2 className="Title">MY LIST</h2>
+      {
+        !myList?.length
+          ? <h4 className="Title">Not elements on my list now</h4>
+          : [
+              { title: 'CONTINUE WATCHING', data: filterInProgress(myList) },
+              { title: 'MOVIES', data: filterMovies(myList) },
+              { title: 'SERIES', data: filterSeries(myList) }
+            ].map((category) => category.data?.length 
+              ? <Carousel
+                  key={category.title}
+                  topic={category.title}
+                  data={category.data}
+                  myList={[]}
+                  loop={false}
+                  action={updateFromMyList}
+                  deleteAction={deleteFromMyList}
+                  CardComponent={CardWithModal}
                 />
-              ))
-          }
-        </tbody>
-      </Table>
-      <ItemModal
-        show={show}
-        handleClose={handleClose}
-        activeElement={activeElement}
-        setActiveElement={setActiveElement}
-        updateElement={updateElement}
-        deleteElementDetail={deleteElementDetail}
-      />
+              : <></>
+          )
+      }
     </Fragment>
   );
 }

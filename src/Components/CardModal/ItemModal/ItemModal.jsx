@@ -5,7 +5,7 @@ import {
   FloatingLabel,
   Form
 } from 'react-bootstrap';
-import { StarRating } from '../StarRating/StarRating';
+import { StarRating } from './StarRating/StarRating';
 import { ActionAlert } from './ActionAlert/ActionAlert';
 
 import './ItemModal.css';
@@ -28,6 +28,11 @@ export const ItemModal = ({
   const handleDeleteElement = () => {
     setShowAlert(false);
     deleteElementDetail();
+  }
+
+  const handleUpdateElement = () => {
+    updateElement();
+    handleClose();
   }
 
   const handlerOnChange = (e) => {
@@ -81,7 +86,7 @@ export const ItemModal = ({
         <Button variant="danger" onClick={() => {setShowAlert(!showAlert)}}>
           Delete
         </Button>
-        <Button variant="success" onClick={() => updateElement(activeElement.id, activeElement)}>
+        <Button variant="success" onClick={handleUpdateElement}>
           Save Changes
         </Button>
       </Modal.Footer>

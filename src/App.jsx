@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { useEffect, useState, useTransition } from 'react';
+
+import { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Navbar } from './Components/Navbar/Navbar';
 import { Footer } from './Components/Footer/Footer';
@@ -20,7 +21,7 @@ function App() {
   let savedMyList = JSON.parse(localStorage.getItem('play-flix-my-list')) || [];
 
   const [myList, setMyList] = useState(savedMyList);
-  const [isLoading, startTransition] = useTransition();
+  const [isLoading, setIsLoading] = useState(true);
   const [pageName, setPageName] = useState('movies');
   const [founds, changeFounds] = useState([]);
 
@@ -58,36 +59,31 @@ function App() {
     }));
   };
 
-  const handlerOnSearch = () => {
-    changePage('search');
-    setSearch('');
-  }
-
-  const changePage = (page) => {
-    startTransition(async () => {
-      setPageName(page)
-      if (page === 'movies' && !series.length) {
-        setMovies([
-          {title: 'TRENDS', data: await getMoviesSuggestions()},
-          {title: 'THRILLER', data: await getMoviesByGenreId(53)},
-          {title: 'ANIMATION', data: await getMoviesByGenreId(16)},
-          {title: 'COMEDY', data: await getMoviesByGenreId(35)},
-          {title: 'DRAMA', data: await getMoviesByGenreId(18)},
-          {title: 'HORROR', data: await getMoviesByGenreId(27)},
-        ])
-      } else if (page === 'series' && !series.length) {
-        setSeries([
-          {title: 'TRENDS', data: await getSeriesSuggestions()},
-          {title: 'CRIME', data: await getSeriesByGenreId(80)},
-          {title: 'ANIMATION', data: await getSeriesByGenreId(16)},
-          {title: 'COMEDY', data: await getSeriesByGenreId(35)},
-          {title: 'DRAMA', data: await getSeriesByGenreId(18)},
-          {title: 'ACTION & ADVENTURE:', data: await getSeriesByGenreId(10759)},
-        ])
-      } else if (page === 'search') {
-        changeFounds(await searchMoviesAndSeries(search));
-      }
-    })
+  const changePage = async (page) => {
+    setIsLoading(true);
+    setPageName(page);
+    if (page === 'movies' && !series.length) {
+      setMovies([
+        {title: 'TRENDS', data: await getMoviesSuggestions()},
+        {title: 'THRILLER', data: await getMoviesByGenreId(53)},
+        {title: 'ANIMATION', data: await getMoviesByGenreId(16)},
+        {title: 'COMEDY', data: await getMoviesByGenreId(35)},
+        {title: 'DRAMA', data: await getMoviesByGenreId(18)},
+        {title: 'HORROR', data: await getMoviesByGenreId(27)},
+      ])
+    } else if (page === 'series' && !series.length) {
+      setSeries([
+        {title: 'TRENDS', data: await getSeriesSuggestions()},
+        {title: 'CRIME', data: await getSeriesByGenreId(80)},
+        {title: 'ANIMATION', data: await getSeriesByGenreId(16)},
+        {title: 'COMEDY', data: await getSeriesByGenreId(35)},
+        {title: 'DRAMA', data: await getSeriesByGenreId(18)},
+        {title: 'ACTION & ADVENTURE:', data: await getSeriesByGenreId(10759)},
+      ])
+    } else if (page === 'search') {
+      changeFounds(await searchMoviesAndSeries(search));
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -101,7 +97,6 @@ function App() {
         pageName={pageName}
         search={search}
         setSearch={setSearch}
-        searchAction={handlerOnSearch}
       />
       {
         isLoading

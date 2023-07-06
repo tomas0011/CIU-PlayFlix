@@ -3,8 +3,6 @@ import {
   Button
 } from 'react-bootstrap';
 
-import './SearchBar.css';
-
 export const SearchBar = ({ search, setSearch, searchAction }) => {
   const handlerOnChange = (e) => {
     setSearch(e.target.value);

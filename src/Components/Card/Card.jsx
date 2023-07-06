@@ -7,14 +7,14 @@ import {
 
 import './Card.css';
 
-export const Card = ({ data, myList, addToMyList, deleteFromMyList }) => {
+export const Card = ({ data, myList, action }) => {
   const [isLoadingImage, setIsLoadingImage] = useState(true);
   const [isLoadingButton, loadButton] = useTransition(false);
   const [isSaved, setIsSaved] = useState(!!myList?.find((element) => element.id === data.id));
 
   const addElementToMyList = (data) => {
     loadButton(() => {
-      addToMyList(data);
+      action(data);
       setIsSaved(true);
     })
   };

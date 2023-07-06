@@ -1,19 +1,18 @@
 import { Fragment } from 'react';
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Card } from '../Card/Card';
 
 import './Carousel.css';
 import "swiper/css";
 
-export const Carousel = ({ topic, data, myList, addToMyList }) => {
+export const Carousel = ({ topic, data, myList, action, deleteAction, loop, CardComponent }) => {
   return (
     <Fragment>
       <div className="swiperContainer">
         <h3 className="CarrouselTopic">{topic}</h3>
         <Swiper
           modules={[Pagination, Autoplay]}
-          loop={true}
+          loop={loop}
           autoplay={{
             delay: 10000,
             disableOnInteraction: false
@@ -38,10 +37,11 @@ export const Carousel = ({ topic, data, myList, addToMyList }) => {
         >
           {data?.map((element) => (
             <SwiperSlide key={element.id}>
-              <Card
+              <CardComponent
                 data={element}
                 myList={myList}
-                addToMyList={addToMyList}
+                action={action}
+                deleteAction={deleteAction}
               />
             </SwiperSlide>
           ))}

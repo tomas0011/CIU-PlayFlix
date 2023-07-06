@@ -9,7 +9,7 @@ import { SearchBar } from './SearchBar/SearchBar';
 
 import './Navbar.css';
 
-export const Navbar = ({ changePage, pageName, search, setSearch, searchAction }) => {
+export const Navbar = ({ changePage, pageName, search, setSearch }) => {
   const [offcanvasExpanded, setOffcanvasExpanded] = useState(false);
 
   const showOffcanvas = () => { setOffcanvasExpanded(true); }
@@ -18,6 +18,12 @@ export const Navbar = ({ changePage, pageName, search, setSearch, searchAction }
   const selectPage = (page) => {
     changePage(page);
     hideOffcanvas()
+  }
+
+  const handlerOnSearch = () => {
+    changePage('search');
+    hideOffcanvas()
+    setSearch('');
   }
 
   return (
@@ -32,7 +38,10 @@ export const Navbar = ({ changePage, pageName, search, setSearch, searchAction }
             placement="end"
           >
             <Offcanvas.Header closeButton onClick={hideOffcanvas}>
-              <Offcanvas.Title id={`offcanvasBootrsrapNavbarLabel-expand-lg`}>
+              <Offcanvas.Title 
+                className='NavFont'
+                id={`offcanvasBootrsrapNavbarLabel-expand-lg`}
+              >
                 MENU
               </Offcanvas.Title>
             </Offcanvas.Header>
@@ -63,7 +72,7 @@ export const Navbar = ({ changePage, pageName, search, setSearch, searchAction }
                   MY LIST
                 </Nav.Link>
               </Nav>
-              <SearchBar search={search} setSearch={setSearch} searchAction={searchAction}/>
+              <SearchBar search={search} setSearch={setSearch} searchAction={handlerOnSearch}/>
             </Offcanvas.Body>
           </BootrsrapNavbar.Offcanvas>
         </Container>
