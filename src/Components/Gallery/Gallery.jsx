@@ -19,10 +19,10 @@ export const Gallery = ({ topic, founds, myList, addToMyList }) => {
               : founds.results.map((image) => (
                 <Col key={image.id}>
                   <Card
-                    myList={myList}
                     data={image}
+                    myList={myList}
                     action={addToMyList}
-                    deleteFromMyList={() => {}}
+                    showType={true}
                   />
                 </Col>
               ))

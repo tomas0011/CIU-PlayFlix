@@ -1,7 +1,7 @@
 @import '../../App.css';
 
 .Card {
-  border: none;
+  border: 1px solid var(--color-base);
   transition-duration: 300ms;
   background-color: var(--color-bg);
   color: white;
@@ -35,6 +35,18 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.CardLabel {
+  display: inline;
+  color: white;
+  background-color: var(--color-base);
+  padding: 4px 12px 4px 12px;
+  text-align: right;
+}
+
+.CardLabel:hover {
+  color: white;
 }
 
 .CardButton {

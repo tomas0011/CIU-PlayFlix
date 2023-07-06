@@ -7,7 +7,7 @@ import {
 
 import './Card.css';
 
-export const Card = ({ data, myList, action }) => {
+export const Card = ({ data, myList, action, showType }) => {
   const [isLoadingImage, setIsLoadingImage] = useState(true);
   const [isLoadingButton, loadButton] = useTransition(false);
   const [isSaved, setIsSaved] = useState(!!myList?.find((element) => element.id === data.id));
@@ -33,6 +33,10 @@ export const Card = ({ data, myList, action }) => {
         variant="top"
         src={data.image}
       />
+      {showType 
+        ? <label className="CardLabel">{data.type}</label>
+        : ''
+      }
       <ReactCard.Body>
         <ReactCard.Text>
           <h5 className='CardTitle'>{data.title}</h5>
