@@ -1,3 +1,5 @@
+@import '../../App.css';
+
 .Footer {
   background-color: var(--color-base) !important;
   width: 100% !important;

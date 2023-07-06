@@ -1,4 +1,10 @@
-.ItemModal {
+@import '../../../App.css';
+
+.modal-content {
+  background-color: var(--color-bg);
+}
+
+.ItemModalBody {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -7,12 +13,19 @@
 .ItemModalData {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  width: 100%;
+}
+
+.StarRating {
+  align-self: center;
+  margin-top: 2em;
 }
 
 .ItemModalImage {
   width: 100px;
   height: 200px;
+  margin: 2em;
   object-fit: cover;
 }
 

@@ -12,7 +12,7 @@ export const getMoviesSuggestions = async () => {
   return results.map((serie) => ({
     type: 'movie',
     id: serie.id,
-    title: serie.original_title,
+    title: serie.title,
     image: `https://www.themoviedb.org/t/p/w220_and_h330_face/${serie.poster_path}`
   }));
 }
@@ -29,7 +29,7 @@ export const getMoviesByGenreId = async (genreId) => {
   return results.map((serie) => ({
     type: 'movie',
     id: serie.id,
-    title: serie.original_title,
+    title: serie.title,
     image: `https://www.themoviedb.org/t/p/w220_and_h330_face/${serie.poster_path}`
   }));
 }
@@ -46,7 +46,7 @@ export const getSeriesSuggestions = async () => {
   return results.map((serie) => ({
     type: 'serie',
     id: serie.id,
-    title: serie.original_name,
+    title: serie.name,
     image: `https://www.themoviedb.org/t/p/w220_and_h330_face/${serie.poster_path}`
   }));
 }
@@ -63,7 +63,7 @@ export const getSeriesByGenreId = async (genreId) => {
   return results.map((serie) => ({
     type: 'serie',
     id: serie.id,
-    title: serie.original_name,
+    title: serie.name,
     image: `https://www.themoviedb.org/t/p/w220_and_h330_face/${serie.poster_path}`
   }));
 }
@@ -79,12 +79,12 @@ export const searchMoviesAndSeries = async (search) => {
   const { results } = await response.json();
   return {
     search,
-    results: results.map((serie) => ({
-      type: serie.media_type === 'tv' ? 'serie' : 'movie',
-      id: serie.id,
-      title: serie.original_title,
-      image: !!serie.poster_path
-        ? `https://www.themoviedb.org/t/p/w220_and_h330_face/${serie.poster_path}` 
+    results: results.map((media) => ({
+      type: media.media_type === 'tv' ? 'serie' : 'movie',
+      id: media.id,
+      title: media.title || media.name,
+      image: !!media.poster_path
+        ? `https://www.themoviedb.org/t/p/w220_and_h330_face/${media.poster_path}` 
         : 'https://www.feed-image-editor.com/sites/default/files/perm/wysiwyg/image_not_available.png'
     }))
   } 
