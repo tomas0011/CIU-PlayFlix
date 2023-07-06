@@ -7,10 +7,10 @@
   color: white;
 }
 
-.Card:hover {
-  transform: scale(1.05);
-  z-index: 1;
+.CardImage:hover {
+  transform: scale(1.02);
   transition-duration: 100ms;
+  overflow: hidden;
 }
 
 .CardImage {

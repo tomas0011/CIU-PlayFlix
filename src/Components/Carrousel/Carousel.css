@@ -4,14 +4,6 @@
   overflow: hidden;
 }
 
-.swiper-horizontal {
-  overflow: visible !important;
-}
-
-.swiper:hover {
-  overflow: visible;
-}
-
 .CarrouselTopic {
   letter-spacing: 2px;
   margin: 0 0 1em 2em;
