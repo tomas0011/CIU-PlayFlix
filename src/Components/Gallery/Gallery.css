@@ -1,3 +1,13 @@
 .GalleryTitle {
   margin: 1em 2em 1em 2em;
 }
+
+.row {
+  margin-bottom: 2em;
+}
+
+.col {
+  margin: 1em;
+  padding: 0;
+  overflow: hidden;
+}

@@ -1,6 +1,7 @@
 @import '../../App.css';
 
 .Card {
+  border-radius: 0px;
   border: 1px solid var(--color-base);
   transition-duration: 300ms;
   background-color: var(--color-bg);

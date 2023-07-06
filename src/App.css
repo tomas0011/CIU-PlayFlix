@@ -28,6 +28,14 @@ body {
   height: 325px;
 }
 
+.form-control {
+  border-radius: 0px;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
 .btn-success {
   background-color: var(--color-acent);
   color: white;
