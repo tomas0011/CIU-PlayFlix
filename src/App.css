@@ -24,8 +24,8 @@ body {
 }
 
 .Loader {
-  width: 400px;
-  height: 400px;
+  width: 325px;
+  height: 325px;
 }
 
 .btn-success {
@@ -43,7 +43,7 @@ body {
 }
 
 .Title {
-  letter-spacing: 10px;
+  letter-spacing: 8px;
   text-align: center;
-  font-size: 8vh;
+  font-size: 8vw;
 }

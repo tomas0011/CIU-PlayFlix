@@ -2,6 +2,10 @@
   background-color: var(--color-base) !important;
 }
 
+.Logo {
+  width: 12vh;
+}
+
 .NavFont {
   color: white;
 }

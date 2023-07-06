@@ -7,6 +7,7 @@ import {
 } from 'react-bootstrap';
 import { SearchBar } from './SearchBar/SearchBar';
 
+import playFlixLogo from '../../Assets/images/playflix.png';
 import './Navbar.css';
 
 export const Navbar = ({ changePage, pageName, search, setSearch }) => {
@@ -30,7 +31,9 @@ export const Navbar = ({ changePage, pageName, search, setSearch }) => {
     <Fragment>
       <BootrsrapNavbar expanded={offcanvasExpanded} expand='md' className="Navbar bg-body-tertiary mb-3">
         <Container fluid>
-          <BootrsrapNavbar.Brand className='NavFont' onClick={() => changePage('movies')} href="#movies">PlayFlix</BootrsrapNavbar.Brand>
+          <BootrsrapNavbar.Brand className='NavFont' onClick={() => changePage('movies')} href="#movies">
+            <img className='Logo' src={playFlixLogo}/>
+          </BootrsrapNavbar.Brand>
           <BootrsrapNavbar.Toggle onClick={showOffcanvas} aria-controls={`offcanvasBootrsrapNavbar-expand-lg`} />
           <BootrsrapNavbar.Offcanvas
             id={`offcanvasBootrsrapNavbar-expand-lg`}

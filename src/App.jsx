@@ -121,7 +121,7 @@ function App() {
               updateFromMyList={updateFromMyList}
             />
           : pageName === 'search' && <Gallery
-              topic={`Results for the search:`}
+              topic={`RESULTS FOR:`}
               founds={founds}
               myList={myList}
               addToMyList={addToMyList}
